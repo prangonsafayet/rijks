@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import {Find} from 'react-lodash';
 import _ from 'lodash';
 import styles from './Main.css';
-const Main = () => {
+
+const MainEn = () => {
     const [arts, setArts] = useState(0);
     const navigate = useNavigate();
 
@@ -24,7 +25,7 @@ const Main = () => {
 
     useEffect(() => {
       const fetchArts = async () => {
-        await axios.get(`https://www.rijksmuseum.nl/api/nl/collection?key=rirqQnx4`)
+        await axios.get(`https://www.rijksmuseum.nl/api/en/collection?key=rirqQnx4`)
         .then(res => {
           const response = res.data;
           console.log(response);
@@ -72,4 +73,4 @@ const Main = () => {
   )
 }
 
-export default Main
+export default MainEn

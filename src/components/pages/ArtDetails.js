@@ -3,7 +3,7 @@ import {useLocation}  from 'react-router-dom';
 
 const ArtDetails = () => {
     const {state} = useLocation();
-    console.log(state);
+    //console.log(state);
   return (
     <div>
         <h2>{state.longTitle}</h2>

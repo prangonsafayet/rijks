@@ -7,29 +7,30 @@ import styles from './Main.css';
 
 const MainEn = () => {
     const [arts, setArts] = useState(0);
+    const [preArts, setPreArts] = useState(null);
     const navigate = useNavigate();
 
     const showArtDetails = (art) => {
         navigate('/artdetails', {state: art});
     }
 
-    var users = [
-        { 'user': 'barney',  'age': 36, 'active': true },
-        { 'user': 'fred',    'age': 40, 'active': false },
-        { 'user': 'pebbles', 'age': 1,  'active': true }
-      ];
+    const handleChange = (e) => {
+      e.preventDefault();
+        var results=_.filter(preArts,function(item){
+          return item.longTitle.toLowerCase().indexOf(e.target.value)>-1;
+        });
+        setArts(results);
+    }
 
-     const hudai =  _.filter(arts.artObjects, {  'longTitle': 'Bureau, Abraham Roentgen, ca. 1758 - ca. 1760' });
-    console.log(hudai);
   
 
     useEffect(() => {
       const fetchArts = async () => {
-        await axios.get(`https://www.rijksmuseum.nl/api/en/collection?key=rirqQnx4`)
+        await axios.get('https://www.rijksmuseum.nl/api/en/collection?key=rirqQnx4')
         .then(res => {
           const response = res.data;
-          console.log(response);
-          setArts(response);
+          setPreArts(response.artObjects);
+          setArts(response.artObjects);
         })
       }
     
@@ -39,12 +40,13 @@ const MainEn = () => {
 
     
   return (
-    <div className='main-page' style={{ backgroundImage: `url(./Home.jpeg)` }}>
+    <div className='main-page' style={{ backgroundImage: "url('./Home.jpeg')" }}>
       <div className='container'>
       <h1 className='page-header'>List of arts</h1>
+      <input type="text" placeholder="Search" onChange={handleChange} />
         {/* <Find collection={myArr} predicate={myArr.id} fromIndex={0} /> */}
         {arts ? <div className='artbox-container'>
-            {arts.artObjects.map((art) => {
+            {arts.map((art) => {
                 return (
                   <div className='artboxes' onClick={() => showArtDetails(art)} key={art.id}>
                     <img src={art.headerImage.url} alt={art.title}/>

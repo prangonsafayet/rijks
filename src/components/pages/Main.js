@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import _ from 'lodash';
-import styles from './Main.css';
+import './Main.css';
+import {Helmet} from "react-helmet";
 const Main = () => {
     const [arts, setArts] = useState(0);
     const [preArts, setPreArts] = useState(null);
@@ -41,6 +42,11 @@ const Main = () => {
     
   return (
     <div className='main-page' style={{ backgroundImage: "url('./Home.jpeg')" }}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Home</title>
+        <link rel="icon" type="image/png" href="museum.png" sizes="16x16" />
+      </Helmet>
       <div className='container'>
       <h1 className='page-header'>List of arts</h1>
       <input type="text" placeholder="Search" onChange={handleChange} className="search-box" />

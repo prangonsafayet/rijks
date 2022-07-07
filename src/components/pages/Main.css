@@ -26,6 +26,14 @@
     margin: 0 auto;
     flex-direction: column;
 }
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+}
 .page-header{
     font-weight: 700;
     text-transform: uppercase;

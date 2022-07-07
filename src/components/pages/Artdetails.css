@@ -1,0 +1,24 @@
+.artDetails-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 90%;
+    width: 550px;
+    background: #000;
+    margin: 0 auto;
+}
+.art-image{
+    width: 100%;
+    height: auto;
+}
+.details-row{
+    margin: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.496);
+    margin-top: 0;
+}
+.details-row-first{
+    margin-top: 20px;
+}
+.left-side{
+    width: 20%;
+    position: relative;
+}

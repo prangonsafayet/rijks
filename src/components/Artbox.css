@@ -24,7 +24,7 @@
     border-radius: 5px 5px 0 0;
 }
 .artboxes h1{
-    font-size: 4vw;
+    font-size: 5vw;
     font-weight: 500;
     margin: 0;
     margin: auto 0;
@@ -40,6 +40,7 @@
     font-size: 18px;
     border: 1px solid rgba(0,0,0,100%);
     width: 180px;
+    max-width: 40%;
     padding: 20px;
     margin: 0 auto;
     margin-top: 20px;
@@ -51,9 +52,8 @@
     background: #29130db4;
     transition: 0.2s;
 }
-/* .artboxes:hover{
-    cursor: pointer;
-    transform: scale(1.02);
-    transition: 0.4s;
-    background: #29130dc6;
-} */
+@media screen and (max-width: 992px){
+    .details-button{
+        font-size: 16px;
+    }
+}

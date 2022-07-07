@@ -43,7 +43,7 @@ const Main = () => {
     <div className='main-page' style={{ backgroundImage: "url('./Home.jpeg')" }}>
       <div className='container'>
       <h1 className='page-header'>List of arts</h1>
-      <input type="text" placeholder="Search" onChange={handleChange} />
+      <input type="text" placeholder="Search" onChange={handleChange} className="search-box" />
         {/* <Find collection={myArr} predicate={myArr.id} fromIndex={0} /> */}
         {arts ? <div className='artbox-container'>
             {arts.map((art) => {

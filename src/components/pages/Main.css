@@ -16,7 +16,7 @@
     left:0;
     width: 100%;
     height: 100%;
-    background: rgb(0 0 0 / 49%);
+    background: rgb(0 0 0 / 60%);
 }
 .container{
     z-index: 11;
@@ -70,4 +70,25 @@
     transform: scale(1.02);
     transition: 0.4s;
     background: #29130dc6;
+}
+.search-box{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    width: 75%;
+    margin: 0 auto;
+    padding: 10px 15px;
+    border-radius: 25px;
+    background: rgb(0 0 0 / 49%);
+    color: #fff;
+    margin-bottom: 40px;
+    transition: 0.2s;
+}
+.search-box:focus-visible{
+    outline: none;
+    -webkit-box-shadow: 2px 5px 11px -1px rgba(0,0,0,0.88); 
+    box-shadow: 2px 5px 11px -1px rgba(0,0,0,0.88);
+    background: rgb(0 0 0 / 70%);
+    transition: 0.2s;
 }

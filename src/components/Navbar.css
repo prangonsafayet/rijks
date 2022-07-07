@@ -4,6 +4,11 @@
     display: flex;
     background: #000;
     color:#fff;
+    position: fixed;
+    height:80px;
+    top:0;
+    left:0;
+    z-index: 13;
 }
 .navbar a{
     color: #fff;

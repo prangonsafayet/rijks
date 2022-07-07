@@ -4,10 +4,11 @@ import _ from 'lodash';
 import './Main.css';
 import {Helmet} from "react-helmet";
 import Artbox from '../Artbox';
+
 const Main = () => {
     const [arts, setArts] = useState(0);
     const [preArts, setPreArts] = useState(null);
-    
+    const [scroll, setScroll] = useState(false);
 
     const handleChange = (e) => {
       e.preventDefault();
@@ -16,6 +17,7 @@ const Main = () => {
         });
         setArts(results);
     }
+    
 
     
   
@@ -30,6 +32,10 @@ const Main = () => {
           setArts(response.artObjects);
         })
       }
+      window.addEventListener("scroll", () => {
+        setScroll(window.scrollY > 80);
+      });
+
     
       fetchArts();
     }, [])
@@ -43,10 +49,9 @@ const Main = () => {
         <title>Home</title>
         <link rel="icon" type="image/png" href="museum.png" sizes="16x16" />
       </Helmet>
-      <div className='container'>
-      <h1 className='page-header'>List of arts</h1>
-      <input type="text" placeholder="Search" onChange={handleChange} className="search-box" />
-        {/* <Find collection={myArr} predicate={myArr.id} fromIndex={0} /> */}
+      
+      
+      <input type="text" placeholder="Search" onChange={handleChange} className={scroll ? "search-box scrolled" : "search-box"} />
         {arts ? <div className='artbox-container'>
             {arts.map((art) => {
                 return (
@@ -54,7 +59,7 @@ const Main = () => {
                 )    
             })}
         </div> : null}
-      </div>
+      
 
 
 

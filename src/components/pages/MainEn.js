@@ -5,64 +5,69 @@ import './Main.css';
 import {Helmet} from "react-helmet";
 import Artbox from '../Artbox';
 const MainEn = () => {
-    const [arts, setArts] = useState(0);
-    const [preArts, setPreArts] = useState(null);
-    
+  const [arts, setArts] = useState(0);
+  const [preArts, setPreArts] = useState(null);
+  const [scroll, setScroll] = useState(false);
 
-    const handleChange = (e) => {
-      e.preventDefault();
-        var results=_.filter(preArts,function(item){
-          return item.longTitle.toLowerCase().indexOf(e.target.value)>-1;
-        });
-        setArts(results);
-    }
+  const handleChange = (e) => {
+    e.preventDefault();
+      var results=_.filter(preArts,function(item){
+        return item.longTitle.toLowerCase().indexOf(e.target.value)>-1;
+      });
+      setArts(results);
+  }
+  
 
   
 
-    useEffect(() => {
-      const fetchArts = async () => {
-        await axios.get('https://www.rijksmuseum.nl/api/en/collection?key=rirqQnx4')
-        .then(res => {
-          const response = res.data;
-          setPreArts(response.artObjects);
-          setArts(response.artObjects);
-        })
-      }
+
+  useEffect(() => {
+    const fetchArts = async () => {
+      await axios.get('https://www.rijksmuseum.nl/api/en/collection?key=rirqQnx4')
+      .then(res => {
+        const response = res.data;
+        //console.log(response);
+        setPreArts(response.artObjects);
+        setArts(response.artObjects);
+      })
+    }
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 80);
+    });
+
+  
+    fetchArts();
+  }, [])
+  
+
+  
+return (
+  <div className='main-page' style={{ backgroundImage: "url('./Home.jpeg')" }}>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Home</title>
+      <link rel="icon" type="image/png" href="museum.png" sizes="16x16" />
+    </Helmet>
     
-      fetchArts();
-    }, [])
+    <input type="text" placeholder="Search" onChange={handleChange} className={scroll ? "search-box scrolled" : "search-box"} />
+      {arts ? <div className='artbox-container'>
+          {arts.map((art) => {
+              return (
+                <Artbox img={art.headerImage.url} alt={art.title} title={art.longTitle} art={art} key={art.id}/>
+              )    
+          })}
+      </div> : null}
     
 
-    
-  return (
-    <div className='main-page' style={{ backgroundImage: "url('./Home.jpeg')" }}>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Home</title>
-        <link rel="icon" type="image/png" href="museum.png" sizes="16x16" />
-      </Helmet>
-      <div className='container'>
-      <h1 className='page-header'>List of arts</h1>
-      <input type="text" placeholder="Search" onChange={handleChange} className="search-box" />
-        {/* <Find collection={myArr} predicate={myArr.id} fromIndex={0} /> */}
-        {arts ? <div className='artbox-container'>
-            {arts.map((art) => {
-                return (
-                  <Artbox img={art.headerImage.url} alt={art.title} title={art.longTitle} art={art} key={art.id}/>
-                )
-              })}
-        </div> : null}
-      </div>
 
 
 
-
-        
-
+      
 
 
-        
-    </div>
+
+      
+  </div>
   )
 }
 

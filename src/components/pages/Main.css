@@ -7,7 +7,8 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: 'Montserrat', sans-serif;
-    color:#fff
+    color:#fff;
+    margin-top: 80px;
 }
 .main-page::before{
     content: '';
@@ -16,7 +17,7 @@
     left:0;
     width: 100%;
     height: 100%;
-    background: rgb(0 0 0 / 60%);
+    background: rgb(0 0 0 / 70%);
 }
 .container{
     z-index: 11;
@@ -62,6 +63,17 @@
     background: rgb(0 0 0 / 49%);
     color: #fff;
     margin-bottom: 40px;
+    transition: 0.2s;
+    position: fixed;
+    top:160px;
+    left:0;
+    right:0;
+    z-index: 12;
+    margin: 0 auto;
+    transition: 0.2s;
+}
+.search-box.scrolled{
+    top:120px;
     transition: 0.2s;
 }
 .search-box:focus-visible{

@@ -42,35 +42,6 @@
     width: 100%;
     flex-wrap: wrap;
 }
-.artboxes{
-    flex: 1 0 40%;
-    margin: 5px;
-    background: #000;
-    min-height: 230px;
-    display: flex;
-    flex-direction: column;
-    transform: scale(1);
-    transition: 0.4s;
-    border-radius: 5px;
-}
-.artboxes img{
-    width: 100%;
-    height: auto;
-    border-radius: 5px 5px 0 0;
-}
-.artboxes p{
-    font-size: 16px;
-    font-weight: 300;
-    margin: 0;
-    padding: 10px;
-    margin: auto 0;
-}
-.artboxes:hover{
-    cursor: pointer;
-    transform: scale(1.02);
-    transition: 0.4s;
-    background: #29130dc6;
-}
 .search-box{
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;

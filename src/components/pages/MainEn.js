@@ -1,17 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom";
 import _ from 'lodash';
 import './Main.css';
 import {Helmet} from "react-helmet";
+import Artbox from '../Artbox';
 const MainEn = () => {
     const [arts, setArts] = useState(0);
     const [preArts, setPreArts] = useState(null);
-    const navigate = useNavigate();
-
-    const showArtDetails = (art) => {
-        navigate('/artdetails', {state: art});
-    }
+    
 
     const handleChange = (e) => {
       e.preventDefault();
@@ -47,23 +43,14 @@ const MainEn = () => {
       </Helmet>
       <div className='container'>
       <h1 className='page-header'>List of arts</h1>
-      <input type="text" placeholder="Search" onChange={handleChange} />
+      <input type="text" placeholder="Search" onChange={handleChange} className="search-box" />
         {/* <Find collection={myArr} predicate={myArr.id} fromIndex={0} /> */}
         {arts ? <div className='artbox-container'>
             {arts.map((art) => {
                 return (
-                  <div className='artboxes' onClick={() => showArtDetails(art)} key={art.id}>
-                    <img src={art.headerImage.url} alt={art.title}/>
-                    <p>{art.longTitle}</p>
-                    
-                  </div>
-
-
+                  <Artbox img={art.headerImage.url} alt={art.title} title={art.longTitle} art={art} key={art.id}/>
                 )
-                
-                
-                
-            })}
+              })}
         </div> : null}
       </div>
 

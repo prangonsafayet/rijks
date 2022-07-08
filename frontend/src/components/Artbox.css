@@ -1,0 +1,59 @@
+.artboxes{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    align-content: center;
+    justify-content: center;
+}
+.artboxes::after{
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,49%);
+}
+.artboxes img{
+    width: 100%;
+    height: auto;
+    border-radius: 5px 5px 0 0;
+}
+.artboxes h1{
+    font-size: 46px;
+    font-weight: 500;
+    margin: 0;
+    margin: auto 0;
+    text-align: center;
+}
+.details-button{
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    border: 1px solid rgba(0,0,0,100%);
+    width: 180px;
+    max-width: 40%;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 35px;
+    transition: 0.2s;
+}
+.details-button:hover{
+    cursor: pointer;
+    background: #29130db4;
+    transition: 0.2s;
+}
+@media screen and (max-width: 992px){
+    .details-button{
+        font-size: 16px;
+    }
+}

@@ -18,7 +18,7 @@ const MainEn = () => {
   }
 
   const fetchArts = async () => {
-    await axios.get('http://localhost:3000/search?lang=en')
+    await axios.get('http://localhost:3001/search?lang=en')
     .then(res => {
       const response = res.data;
       //console.log(response);

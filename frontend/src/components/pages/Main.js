@@ -4,6 +4,7 @@ import _ from 'lodash';
 import './Main.css';
 import {Helmet} from "react-helmet";
 import Artbox from '../Artbox';
+import { getLang } from '../../lib/languageSwitcher';
 
 const Main = () => {
     const [arts, setArts] = useState(0);
@@ -12,16 +13,16 @@ const Main = () => {
 
     const handleChange = async (e) => {
       e.preventDefault();
-        await fetchArts();
         var results=_.filter(preArts,function(item){
-          return item.longTitle.toLowerCase().indexOf(e.target.value)>-1;
+          console.log(item);
+          return item.longTitle.toLowerCase().indexOf(e.target.value.toLowerCase())>-1;
         });
         setArts(results);
     }
     
 
     const fetchArts = async () => {
-      await axios.get('http://localhost:3001/search?lang=nl')
+      await axios.get('http://localhost:3001/search?lang='+getLang())
       .then(res => {
         const response = res.data;
         //console.log(response);

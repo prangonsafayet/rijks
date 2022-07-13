@@ -1,16 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {useLocation}  from 'react-router-dom';
 import {Helmet} from "react-helmet";
+import axios from "axios";
 import "./Main.css";
 import "./Artdetails.css";
+import { getLang } from '../../lib/languageSwitcher';
 const ArtDetails = () => {
     const {state} = useLocation();
-    //console.log(state);
+    const [art, setArt] = useState({}); 
+    
+    
+    useEffect(() => {
+      if(!state){
+        window.location.href = '/'
+      }
+      axios.get('http://localhost:3001/get?obj_id='+state.objectNumber+'&&lang='+getLang())
+      .then(res => {
+        setArt(res.data);
+      })
+    }, [])
+    
   return (
     <div>
-      <Helmet>
+      {art && art.artObject && <>
+        <Helmet>
         <meta charSet="utf-8" />
-        <title>{state.title}</title>
+        <title>{art.title}</title>
         <link rel="icon" type="image/png" href="museum.png" sizes="16x16" />
       </Helmet>
       <div className='art-details-page' style={{ background: "#000" }}>
@@ -26,54 +41,33 @@ const ArtDetails = () => {
                   </div>
                   <div className='col right-side'>
                     <p>
-                      {state.title}
+                      {art.artObject.title}
                     </p>
                   </div>
                 </div>
                 <div className='row details-row'>
                   <div className='col left-side'>
-                    <p>First Maker: </p>
+                    <p>Principal Makers: </p>
                   </div>
                   <div className='col right-side'>
-                    <p>
-                      {state.principalOrFirstMaker}
-                    </p>
+                    <ul>
+                      {art.artObject.principalMakers.map((maker, index)=><li key={index}>{maker.name}</li>)}
+                      </ul>
                   </div>
                 </div>
               </div>
               <div className='col'>
-                <img src={state.webImage.url} alt={state.longTitle} className="art-image" />
+                <img src={art.artObject.webImage.url} alt={art.artObject.longTitle} className="art-image" />
               </div>
               
             </div>
-            {/* <div className='row details-row details-row-first'>
-              <div className='col left-side'>
-                <p>Title: </p>
-              </div>
-              <div className='col right-side'>
-                <p>
-                  {state.title}
-                </p>
-                
-              </div>
-            </div> */}
-            {/* <div className='row details-row'>
-              <div className='col left-side'>
-                <p>First Maker: </p>
-              </div>
-              <div className='col right-side'>
-                <p>
-                  {state.principalOrFirstMaker}
-                </p>
-                
-              </div>
-            </div> */}
           </div>
           
           
         </div>
       
       </div>
+      </>}
         
     </div>
   )

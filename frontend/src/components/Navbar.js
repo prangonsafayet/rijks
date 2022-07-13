@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { setLang } from '../lib/languageSwitcher';
 import './Navbar.css';
 
 
@@ -16,14 +17,20 @@ const Navbar = () => {
               </div>
                 
                 <div className='lang-selector-container'>
-                  <Link to="/" className="lang-selector">
+                  <button onClick={()=>{
+                    setLang("nl");
+                    window.location.reload();
+                  }} className="lang-selector">
                     <img src='./nl.png' alt="Dutch"/>
                       NL
-                  </Link>
-                  <Link to="/en" className="lang-selector">
-                  <img src='./en.webp' alt="English"/>
+                  </button>
+                  <button onClick={()=>{
+                    setLang("en");
+                    window.location.reload();
+                  }} className="lang-selector">
+                    <img src='./en.webp' alt="English"/>
                       EN
-                  </Link>
+                  </button>
                 </div>
                 
                

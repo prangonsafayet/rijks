@@ -4,8 +4,8 @@ const redisConfig = {
 }
 
 const apiConfig = {
-    url: `https://www.rijksmuseum.nl/api/`,
+    apiUrl: `https://www.rijksmuseum.nl/api/`,
     key: 'rirqQnx4'
 }
 
-module.exports = {redisConfig};
+module.exports = {redisConfig, apiConfig};

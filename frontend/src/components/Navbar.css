@@ -35,6 +35,13 @@
 .lang-selector{
     margin: 0 10px;
     display: flex;
+    background: transparent;
+    color: #fff;
+    border: none;
+    outline: none;
+}
+.lang-selector{
+    cursor: pointer;
 }
 .lang-selector img{
     max-height: 15px;

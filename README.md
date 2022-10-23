@@ -1,4 +1,4 @@
-# rijks
+# Rijks museum web app
 Rijks Museum Search app
 
 This is a web app which fetches the art objects from the Rijks museum api and shows all of them. On the details page you can see the details for each artifacts invidually. The items can be also searched through a search and filter on the index. It also shows both the NL and EN version and the corresponding art details.
